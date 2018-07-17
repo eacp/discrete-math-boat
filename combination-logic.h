@@ -20,7 +20,8 @@ typedef struct __comb_s{
 	char boat;
 }Comb;
 
-#define PRCOMB(c) printf((c).boat == LEFT ? "H: %hhu C: %hhu b|H: %hhu C: %hhu\n" : "H: %hhu C: %hhu |b H: %hhu C: %hhu\n", (c).left.herbivore, (c).left.carnivore, (c).right.herbivore, (c).right.carnivore)
+#define PRCOMB(c) printf((c).boat == LEFT ? "H: %hhu C: %hhu b|H: %hhu C: %hhu\n" : "H: %hhu C: %hhu |b H: %hhu C: %hhu\n",\
+(c).left.herbivore, (c).left.carnivore, (c).right.herbivore, (c).right.carnivore)
 
 Comb gen_comb(const ui8 right_h,const ui8 right_c);
 
