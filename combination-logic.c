@@ -25,7 +25,7 @@ void put_comb_long(const Comb *c) {
 	//print all the vs from the left
 	for(i = 0; i < c->left.herbivore;i++) putchar('v');
 	//print all the cs from the left
-	for(i = 0; i < c->left.herbivore;i++) putchar('c');
+	for(i = 0; i < c->left.carnivore;i++) putchar('c');
 	//print the possible location of the boat
 	if(c->boat == LEFT) putchar('B');
 	//the neccesary separator
@@ -33,7 +33,7 @@ void put_comb_long(const Comb *c) {
 	//print all the vs from the right
 	for(i = 0; i < c->right.herbivore;i++) putchar('v');
 	//print all the cs from the right
-	for(i = 0; i < c->right.herbivore;i++) putchar('c');
+	for(i = 0; i < c->right.carnivore;i++) putchar('c');
 	//print the possible location of the boat
 	if(c->boat == RIGHT) putchar('B');
 
@@ -43,5 +43,15 @@ void put_comb_long(const Comb *c) {
 
 int comb_valid(const Comb *c) {
 	//todo create actual code to determine if combination is valid
+	const Side *s = c->boat == LEFT ? &c->right : &c->left;
+	const ui8 sum_side = s->herbivore + s->carnivore;
+
+	return sum_side < 4 && (s->herbivore == 0 || s->carnivore <= s->herbivore);
+}
+
+int can_connect(const Comb first, const Comb second) {
+	//In order to conect boats can't be on the same side
+	if(first.boat == second.boat) return 0;
+
 	return 1;
 }
