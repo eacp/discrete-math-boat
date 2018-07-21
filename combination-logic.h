@@ -38,7 +38,7 @@ Comb gen_comb(const ui8 right_h,const ui8 right_c);
  *
  * @param c pointer to the combination to print
  */
-void put_comb_long(const Comb *c);
+void put_comb_long(const Comb c);
 
 /**
  * Validates a combination to see if it meets
@@ -52,11 +52,11 @@ int comb_valid(const Comb *c);
 /**
  * Checks if 2 combinations can be conected
  *
- * @param first Pointer to the first combinations
- * @param second Pointer to the second combination
+ * @param before Pointer to the first combinations
+ * @param after Pointer to the second combination
  *
  * @return They can conect or not
  */
-int can_connect(const Comb first, const Comb second);
+int can_connect(const Comb before, const Comb after);
 
 #endif //HERB_CARN_PROBLEM_COMBINATION_LOGIC_H
