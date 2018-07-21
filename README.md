@@ -26,3 +26,7 @@ This gets resumed as:
 3. Stablish connections between them
 4. Store those connections in a matrix
 5. Print the matrix
+
+## Update:
+
+Now you can use an arbitrary number N for the animals of each type, and generate the combinations. You can either type the number in the command line or pass it as n argument to the program.

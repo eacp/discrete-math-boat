@@ -2,6 +2,8 @@
 // Created by dalek-cos on 17/07/18.
 //
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #ifndef HERB_CARN_PROBLEM_COMBINATION_LOGIC_H
 #define HERB_CARN_PROBLEM_COMBINATION_LOGIC_H
 
@@ -30,7 +32,7 @@ typedef struct __comb_s{
  * @param right_c Carnivores on the right
  * @return A combination
  */
-Comb gen_comb(const ui8 right_h,const ui8 right_c);
+Comb gen_comb(const ui8 right_h,const ui8 right_c,const ui8 n);
 
 /**
  * Print a combination in its long form
@@ -47,7 +49,7 @@ void put_comb_long(const Comb c);
  * @param c Pointer to the combination to validate
  * @return valid or not
  */
-int comb_valid(const Comb *c);
+int comb_valid(const Comb *c,const ui8 n);
 
 /**
  * Checks if 2 combinations can be conected
@@ -60,3 +62,5 @@ int comb_valid(const Comb *c);
 int can_connect(const Comb before, const Comb after);
 
 #endif //HERB_CARN_PROBLEM_COMBINATION_LOGIC_H
+
+#pragma clang diagnostic pop

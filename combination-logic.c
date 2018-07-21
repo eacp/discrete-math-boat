@@ -5,14 +5,14 @@
 #include <stdio.h>
 #include "combination-logic.h"
 
-Comb gen_comb(const ui8 right_h, const ui8 right_c) {
+Comb gen_comb(const ui8 right_h, const ui8 right_c, const ui8 n) {
 	//the right can be inferred from the left
 	Comb c;
 	c.right.herbivore = right_h;
 	c.right.carnivore = right_c;
 	//infer
-	c.left.herbivore = (ui8) (2 - right_h);
-	c.left.carnivore = (ui8) (2 - right_c);
+	c.left.herbivore = (ui8) (n - right_h);
+	c.left.carnivore = (ui8) (n - right_c);
 	//the boat
 	c.boat = RIGHT;
 
@@ -32,17 +32,16 @@ void put_comb_long(const Comb c) {
 	putchar('\n'); //next line
 }
 
-int comb_valid(const Comb *c) {
+int comb_valid(const Comb *c, const ui8 n) {
 	const Side *s = c->boat == LEFT ? &c->right : &c->left; //Where is NO boat
 	const ui8 sum_side = s->herbivore + s->carnivore; //Sum of its components
 
-	return sum_side < 4 && (s->herbivore == 0 || s->carnivore <= s->herbivore);
+	return sum_side < n*2 && (s->herbivore == 0 || s->carnivore <= s->herbivore);
 }
 
 #define SUM_SIDE(s) ((s).carnivore + (s).herbivore)
 #define SUM_L(c) SUM_SIDE((c).left)
 #define SUM_R(c) SUM_SIDE((c).right)
-#define UDIFF(u1,u2) ((u1) > (u2) ? (u1) - (u2) : (u2) - (u1))
 
 int can_connect(const Comb before, const Comb after) {
 	if(before.boat == after.boat) return 0;
