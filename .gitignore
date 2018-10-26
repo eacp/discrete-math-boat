@@ -46,6 +46,8 @@
 *.mod*
 *.cmd
 .tmp_versions/
+.vscode/
+bin/
 modules.order
 Module.symvers
 Mkfile.old
